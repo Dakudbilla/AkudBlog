@@ -19,7 +19,6 @@ const Postcard = ({ post }) => {
       </h1>
       <div className="blovk lg:flex text-center items-center justify-center mb-8 w-full">
         <div className="flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8">
-          {console.log(post.author)}
           <Image
             alt={post.author.name}
             height="30px"
