@@ -2,21 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { PostCard, PostWidget, Categories } from "../components/index";
-const posts = [
-  {
-    title: "React Testing",
-    excerpt: "Learn React Testing",
-  },
-  {
-    title: "React Tugo",
-    excerpt: "Learn React Testing",
-  },
-  {
-    title: "React Sika",
-    excerpt: "Learn React Testing",
-  },
-];
-export default function Home() {
+import { getPosts } from "../services/index";
+export default function Home({ posts }) {
   return (
     <div className="container mx-auto px-10 mb-10">
       <Head>
@@ -40,3 +27,11 @@ export default function Home() {
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  const posts = (await getPosts()) || [];
+  console.log(posts);
+  return {
+    props: { posts },
+  };
+};
