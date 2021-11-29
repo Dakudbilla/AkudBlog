@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import { PostCard, PostWidget, Categories } from "../components/index";
 import { getPosts } from "../services/index";
 export default function Home({ posts }) {
+  console.log(posts.node);
   return (
     <div className="container mx-auto px-10 mb-10">
       <Head>
@@ -14,7 +15,7 @@ export default function Home({ posts }) {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 ">
         <div className="lg:col-span-8 col-span-1">
           {posts.map((post) => (
-            <PostCard post={post} key={post.title} />
+            <PostCard post={post.node} key={post.node.title} />
           ))}
         </div>
         <div className="lg:col-span-4 col-span-1">
