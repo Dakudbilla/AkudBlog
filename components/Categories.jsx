@@ -1,7 +1,24 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { getCategories } from "../services";
 const Categories = () => {
-  return <div>Categories</div>;
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    getCategories().then((newCategories) => setCategories(newCategories));
+  }, []);
+  return (
+    <div className="bg-white shadow-lg rounded p-8 mb-8">
+      <h3 className="text-xl mb-8 font-semibold border-b pb-4">Categories</h3>
+      {categories.map((category) => (
+        <Link key={category.slug} passHref href={`/category/${category.slug}`}>
+          <span className="cursor-pointer block pb-3 mb-3">
+            {category.name}
+          </span>
+        </Link>
+      ))}
+    </div>
+  );
 };
 
 export default Categories;
