@@ -4,7 +4,6 @@ import styles from "../styles/Home.module.css";
 import { PostCard, PostWidget, Categories } from "../components/index";
 import { getPosts } from "../services/index";
 export default function Home({ posts }) {
-  console.log(posts.node);
   return (
     <div className="container mx-auto px-10 mb-10">
       <Head>
@@ -31,7 +30,6 @@ export default function Home({ posts }) {
 
 export const getStaticProps = async () => {
   const posts = (await getPosts()) || [];
-  console.log(posts);
   return {
     props: { posts },
   };
